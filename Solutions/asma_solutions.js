@@ -51,4 +51,17 @@ const maxRecurse = (...nums) =>{
     }
 }
 }
-module.exports = { mul, min, max ,addRecurse}
+function not(func){
+    return function(...args) {
+      return (!func(...args))
+    }
+    }
+    function acc(func, initial) {
+        const returnFunc = (...args) =>{
+         return args.reduce((acc, num)=>{
+            return func(acc,num)
+         }, initial)
+        }
+        return returnFunc;
+      }
+module.exports = { mul, min, max ,addRecurse, not, acc}
